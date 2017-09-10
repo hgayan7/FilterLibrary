@@ -13,7 +13,8 @@ Add it in your root build.gradle at the end of repositories:
 		}
 	}
   Step 2. Add the dependency
-  dependencies {
+ 
+ dependencies {
 	        compile 'com.github.UltraVisionStudio:FilterLibrary:0.1.0'
 	}
   
@@ -23,27 +24,12 @@ Add it in your root build.gradle at the end of repositories:
 	        compile 'com.github.hgayan7:FilterLibrary:0.1.0'
 	}
   
-  CODE:
   
-  public class MainActivity extends AppCompatActivity {
-    ImageView imageView;
-    PhotoFilter photoFilter;
-    Bitmap bitmap;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        imageView=(ImageView)findViewById(R.id.imageView);
-        photoFilter=new PhotoFilter();
-        bitmap= BitmapFactory.decodeResource(getResources(),R.drawable.photo);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-            @Override
-            public void onClick(View view) {
-                imageView.setImageBitmap(photoFilter.five(getApplicationContext(),bitmap));
-            }
-        });
-    }
-}
+  Sample code:
+   PhotoFilter photoFilter;
+    photoFilter=new PhotoFilter();
+    :  :  :
+    :  :  :
+    imageView.setImageBitmap(photoFilter.five(getApplicationContext(),bitmap));
+  
 
-Use photofilter.x to use a filter,where x ranges from one to sixteen.
