@@ -14,19 +14,20 @@ Add it in your root build.gradle at the end of repositories:
 	}
   Step 2. Add the dependency
  
- dependencies 
- 	{
-	        compile 'com.github.UltraVisionStudio:FilterLibrary:0.1.0'
-	}
+		 dependencies 
+ 			{
+	      			  compile 'com.github.UltraVisionStudio:FilterLibrary:0.1.0'
+			}
   
-  or
+  		or
   
-    dependencies {
-	        compile 'com.github.hgayan7:FilterLibrary:0.1.0'
-		}
+   		 dependencies 
+		 	{
+	 	     		  compile 'com.github.hgayan7:FilterLibrary:0.1.0'
+			}
   
   
-  Sample code:
+  	Sample code:
   
    	PhotoFilter photoFilter;
     	photoFilter=new PhotoFilter();
