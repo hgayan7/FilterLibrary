@@ -28,9 +28,9 @@ Add it in your root build.gradle at the end of repositories:
   
   Sample code:
   
-   PhotoFilter photoFilter;
-    photoFilter=new PhotoFilter();
-    ......
-    imageView.setImageBitmap(photoFilter.five(getApplicationContext(),bitmap));
+   	PhotoFilter photoFilter;
+    	photoFilter=new PhotoFilter();
+    	......
+    	imageView.setImageBitmap(photoFilter.five(getApplicationContext(),bitmap));
   
 
