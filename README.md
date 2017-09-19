@@ -1,4 +1,4 @@
-# FilterLibrary                          [![HitCount](http://hits.dwyl.io/hgayan7/FilterLibrary.svg)](http://hits.dwyl.io/hgayan7/FilterLibrary) 
+# FilterLibrary                        
 Android filter library
 Easy to use android photo filter library.
 
