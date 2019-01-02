@@ -1,6 +1,8 @@
 # FilterLibrary                        
-Android filter library
-Easy to use android photo filter library.
+
+Easy to use android image filter library.
+
+[![](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/images/0)](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/links/0)[![](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/images/1)](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/links/1)[![](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/images/2)](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/links/2)[![](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/images/3)](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/links/3)[![](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/images/4)](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/links/4)[![](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/images/5)](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/links/5)[![](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/images/6)](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/links/6)[![](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/images/7)](https://sourcerer.io/fame/hgayan7/hgayan7/FilterLibrary/links/7)
 
 ### Step 1. Add the JitPack repository to your build file
 
