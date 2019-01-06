@@ -14,23 +14,23 @@ Easy to use android image filter library.
 Add it in your root build.gradle at the end of repositories:
 ``` java
 
-	allprojects 
+allprojects 
+{
+	repositories 
 	{
-		repositories 
-		{
-			maven { url 'https://jitpack.io' }
-		}
+		maven { url 'https://jitpack.io' }
 	}
+}
 	
 ```
 
 ### Step 2. Add the dependency
  ``` java	
  
-	dependencies 
-	{
-		compile 'com.github.hgayan7:FilterLibrary:0.1.0'
-	}
+dependencies 
+{
+	compile 'com.github.hgayan7:FilterLibrary:0.1.0'
+}
 	
  ``` 
  
