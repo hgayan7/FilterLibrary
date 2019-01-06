@@ -35,13 +35,24 @@ dependencies
  ### Sample code:
   ``` java
   
-  ImageView myImageView;
-  Bitmap myBitmap;
+  ImageView myImageView1,myImageView2;
+  Bitmap myBitmap1,myBItmap2;
+  
   PhotoFilter photoFilter;
-  myImageView = findViewById(R.id.imageView);
-  myBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.myImage);
+  
+  myImageView1 = findViewById(R.id.imageView1);
+  myBitmap1 = BitmapFactory.decodeResource(getResources(),R.drawable.myImage1);
+  
+  myImageView2 = findViewById(R.id.imageView2);
+  myBitmap2 = BitmapFactory.decodeResource(getResources(),R.drawable.myImage2);
+  
   photoFilter = new PhotoFilter();
-  myImageView.setImageBitmap(photoFilter.five(getApplicationContext(),myBitmap));
+  
+  // using filter 'one'
+  myImageView1.setImageBitmap(photoFilter.one(getApplicationContext(),myBitmap1));
+  
+  // using filter 'sixteen'
+  myImageView2.setImageBitmap(photoFilter.sixteen(getApplicationContext(),myBitmap2));
   
   ```
 ## Screenshots :
