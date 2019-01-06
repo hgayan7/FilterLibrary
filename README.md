@@ -12,6 +12,7 @@ Easy to use android image filter library.
 ### Step 1. Add the JitPack repository to your build file
 
 Add it in your root build.gradle at the end of repositories:
+``` java
 
 	allprojects 
 	{
@@ -20,24 +21,31 @@ Add it in your root build.gradle at the end of repositories:
 			maven { url 'https://jitpack.io' }
 		}
 	}
+	
+```
 
 ### Step 2. Add the dependency
- 		 
->	dependencies 
->	{
-
->		compile 'com.github.hgayan7:FilterLibrary:0.1.0'
-
->	}
-  
+ ``` java	
+ 
+	dependencies 
+	{
+		compile 'com.github.hgayan7:FilterLibrary:0.1.0'
+	}
+	
+ ``` 
  
  ### Sample code:
+  ``` java
   
-  >PhotoFilter photoFilter;
-  >photoFilter=new PhotoFilter();
-  >......
-  >imageView.setImageBitmap(photoFilter.five(getApplicationContext(),bitmap));
+  ImageView myImageView;
+  Bitmap myBitmap;
+  PhotoFilter photoFilter;
+  myImageView = findViewById(R.id.imageView);
+  myBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.myImage);
+  photoFilter = new PhotoFilter();
+  myImageView.setImageBitmap(photoFilter.five(getApplicationContext(),myBitmap));
   
+  ```
 ## Screenshots :
 
 ### Original image :
