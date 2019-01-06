@@ -31,7 +31,6 @@ dependencies
 {
 	compile 'com.github.hgayan7:FilterLibrary:0.1.0'
 }
-	
  ``` 
  
  ### Sample code:
