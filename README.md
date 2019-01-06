@@ -82,4 +82,21 @@ dependencies
   <img width="350" height="250" src="https://user-images.githubusercontent.com/29502161/50734603-71632d80-11c7-11e9-8cc5-c13b080a06dc.jpeg" hspace="20">	
 </p>
 
+## License
+
+```
+  Copyright 2019 Himshikhar Gayan
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+```
 
