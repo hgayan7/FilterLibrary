@@ -1,3 +1,4 @@
+[![Generic badge](https://img.shields.io/badge/Himshikhar-Gayan-RED.svg)](https://shields.io/)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/hgayan7/FilterLibrary/issues)
 [![GitHub contributors](https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg)](https://github.com/hgayan7/FilterLibrary/graphs/contributors/)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
