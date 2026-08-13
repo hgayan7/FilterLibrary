@@ -1,35 +1,82 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
+}
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
-
+    namespace 'com.uvstudio.him.photofilterlibrary'
+    compileSdk 35
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdk 21
+        targetSdk 35
+        versionCode 200
+        versionName "2.0.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'proguard-rules.pro'
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+        freeCompilerArgs += ['-opt-in=kotlin.RequiresOptIn']
+    }
+
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.annotation:annotation:1.8.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1'
 
+    // Optional Compose support (compileOnly so it doesn't force Compose on non-Compose apps)
+    compileOnly 'androidx.compose.ui:ui:1.6.8'
+    compileOnly 'androidx.compose.runtime:runtime:1.6.8'
+    compileOnly 'androidx.compose.ui:ui-graphics:1.6.8'
+
+    // Optional Image Loader transformations (compileOnly)
+    compileOnly 'io.coil-kt:coil:2.6.0'
+    compileOnly 'com.github.bumptech.glide:glide:4.16.0'
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'androidx.test:core:1.5.0'
+    testImplementation 'org.robolectric:robolectric:4.12.2'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1'
+    testImplementation 'androidx.compose.ui:ui-graphics:1.6.8'
+    testImplementation 'io.coil-kt:coil:2.6.0'
+    testImplementation 'com.github.bumptech.glide:glide:4.16.0'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.hgayan7'
+                artifactId = 'FilterLibrary'
+                version = '2.0.0'
+            }
+        }
+    }
 }

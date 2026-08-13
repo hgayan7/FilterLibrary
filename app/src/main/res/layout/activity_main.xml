@@ -1,20 +1,308 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/surfaceDark"
     tools:context="com.uvstudio.him.photofilterlibrary.MainActivity">
 
-
-    <ImageView
-        android:id="@+id/imageView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:elevation="20dp"
-        android:padding="5dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        app:srcCompat="@drawable/photo" />
-</RelativeLayout>
+        android:orientation="vertical">
+
+        <!-- Top App Bar -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/surfaceContainer"
+            app:title="FilterLibrary 2.0"
+            app:titleTextColor="@color/textPrimary">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btnPickPhoto"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Pick Photo"
+                    android:src="@drawable/ic_photo_library"
+                    app:tint="@color/textPrimary" />
+
+                <ImageButton
+                    android:id="@+id/btnRotate"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Rotate"
+                    android:src="@drawable/ic_rotate_right"
+                    app:tint="@color/textPrimary" />
+
+                <ImageButton
+                    android:id="@+id/btnToggleAdjustments"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Fine Tune"
+                    android:src="@drawable/ic_tune"
+                    app:tint="@color/textPrimary" />
+
+                <ImageButton
+                    android:id="@+id/btnShare"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Share"
+                    android:src="@drawable/ic_share"
+                    app:tint="@color/textPrimary" />
+
+                <ImageButton
+                    android:id="@+id/btnSave"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Save Image"
+                    android:src="@drawable/ic_save"
+                    app:tint="@color/textPrimary" />
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <!-- Main Interactive Split Slider Preview -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#0A0A0C">
+
+            <com.uvstudio.him.photofilterlibrary.SplitSliderView
+                android:id="@+id/splitSliderView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ProgressBar
+                android:id="@+id/loadingIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+        <!-- Bottom Controls Area -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/surfaceContainer"
+            android:orientation="vertical"
+            android:paddingTop="6dp"
+            android:paddingBottom="10dp">
+
+            <!-- Intensity Slider Row -->
+            <LinearLayout
+                android:id="@+id/intensityLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+
+                <TextView
+                    android:id="@+id/txtIntensityLabel"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="Strength: 100%"
+                    android:textColor="@color/textSecondary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/sliderIntensity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:value="100.0"
+                    android:valueFrom="0.0"
+                    android:valueTo="100.0" />
+
+            </LinearLayout>
+
+            <!-- Fine-Tuning Adjustments Expandable Panel -->
+            <LinearLayout
+                android:id="@+id/panelAdjustments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:visibility="gone">
+
+                <!-- Brightness Slider -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtBrightness"
+                        android:layout_width="85dp"
+                        android:layout_height="wrap_content"
+                        android:text="Brightness: 0"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="11sp" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderBrightness"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:value="0.0"
+                        android:valueFrom="-100.0"
+                        android:valueTo="100.0" />
+                </LinearLayout>
+
+                <!-- Contrast Slider -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtContrast"
+                        android:layout_width="85dp"
+                        android:layout_height="wrap_content"
+                        android:text="Contrast: 1.0"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="11sp" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderContrast"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:value="1.0"
+                        android:valueFrom="0.0"
+                        android:valueTo="2.5" />
+                </LinearLayout>
+
+                <!-- Warmth Slider -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtWarmth"
+                        android:layout_width="85dp"
+                        android:layout_height="wrap_content"
+                        android:text="Warmth: 0"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="11sp" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderWarmth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:value="0.0"
+                        android:valueFrom="-100.0"
+                        android:valueTo="100.0" />
+                </LinearLayout>
+
+                <!-- Tools Row: Date Stamp & Flip & Reset -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="2dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipDateStamp"
+                        style="@style/Widget.MaterialComponents.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="true"
+                        android:text="Retro '98 Date"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="11sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnFlip"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="8dp"
+                        android:text="Flip"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="11sp"
+                        app:icon="@drawable/ic_flip"
+                        app:iconSize="14dp"
+                        app:iconTint="@color/textPrimary" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnResetAdjustments"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="Reset"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="11sp"
+                        app:icon="@drawable/ic_refresh"
+                        app:iconSize="14dp"
+                        app:iconTint="@color/colorAccent" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Category Tabs -->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayoutCategories"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@android:color/transparent"
+                app:tabGravity="fill"
+                app:tabIndicatorAnimationMode="elastic"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@color/textPrimary"
+                app:tabTextColor="@color/textSecondary" />
+
+            <!-- Horizontal Filter Preset Carousel -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFilters"
+                android:layout_width="match_parent"
+                android:layout_height="124dp"
+                android:layout_marginTop="4dp"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_filter_thumbnail" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
